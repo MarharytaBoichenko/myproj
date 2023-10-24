@@ -17,7 +17,7 @@
     }
   },
   "lint-staged": {
-    "*.(ts|tsx|js|jsx)": "format:fix"
+    "*.(ts|tsx|js|jsx)":["format:fix", "git add"]
   },
   "dependencies": {
     "react": "^18.2.0",
