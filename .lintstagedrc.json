@@ -1,0 +1,5 @@
+{
+  "*.(ts|tsx|js|jsx)": [
+    "format:fix", "git add ."
+  ]
+}

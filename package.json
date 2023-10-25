@@ -17,7 +17,7 @@
     }
   },
   "lint-staged": {
-    "*.(ts|tsx|js|jsx)":["format:fix", "git add"]
+    "*.(ts|tsx|js|jsx)": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "react": "^18.2.0",
