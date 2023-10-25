@@ -7,7 +7,7 @@ class Main extends React.Component {
     return (
       <>
         <Search />
-        <Cards />
+        <Cards cards={} />
       </>
     );
   }

@@ -8,9 +8,18 @@
 
 .card {
   overflow: hidden;
-    border-radius: 2rem;
-    box-shadow: 0.5rem 0.5rem 1rem #740202, -0.5rem -0.5rem 1rem #f7f2ff;
-    background-color: rgba(116,2,2,0.4);
-    box-sizing: border-box;
-    cursor: pointer;
+  border-radius: 2rem;
+  box-shadow: 0.5rem 0.5rem 1rem #740202, -0.5rem -0.5rem 1rem #f7f2ff;
+  background-color: rgba(116,2,2,0.4);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.cards__not {
+  color: #740202;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 3rem;
 }

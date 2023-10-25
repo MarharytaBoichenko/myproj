@@ -1,43 +1,43 @@
 .search {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    padding: 2rem 5rem;
-    margin: 2rem;
-    border-radius: 5rem;
-    background: white;
-    box-shadow: 1rem 1rem 3rem #740202, -1rem -1rem 3rem #f7f2ff;
-    box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem 5rem;
+  margin: 2rem;
+  border-radius: 5rem;
+  background: white;
+  box-shadow: 1rem 1rem 3rem #740202, -1rem -1rem 3rem #f7f2ff;
+  box-sizing: border-box;
 }
 
 .search__button {
   height: 3rem;
-    border-radius: 0.5rem;
-    padding: 0 3rem 0.2rem;
-    box-sizing: border-box;
-    color: #740202;
-    transition: color .2s ease;
-    cursor: pointer;
-    user-select: none;
-    background: white;
-    border-color: #740202;
-    text-transform: none;
-    font-weight: 700;
+  border-radius: 0.5rem;
+  padding: 0 3rem 0.2rem;
+  box-sizing: border-box;
+  color: #740202;
+  transition: color .2s ease;
+  cursor: pointer;
+  user-select: none;
+  background: white;
+  border-color: #740202;
+  text-transform: none;
+  font-weight: 700;
 }
 
 .search__input {
   flex: 1 1 100%;
   width: 100%;
-    height: 100%;
-    min-height: 3rem;
-    border: 0;
-    border-radius: 0.5rem;
-    min-width: 1.6rem;
-    padding-left: 1.4rem;
-    padding-bottom: 0.3rem;
-    outline: none;
-    box-sizing: border-box;
-    background-color: rgba(116,2,2,0.2);
-    overflow: visible;
+  height: 100%;
+  min-height: 3rem;
+  border: 0;
+  border-radius: 0.5rem;
+  min-width: 1.6rem;
+  padding-left: 1.4rem;
+  padding-bottom: 0.3rem;
+  outline: none;
+  box-sizing: border-box;
+  background-color: rgba(116,2,2,0.2);
+  overflow: visible;
 }

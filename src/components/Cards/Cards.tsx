@@ -1,17 +1,22 @@
 import React from "react";
 import Card from "./Card";
+import { CardsProps } from "../../types/card.types";
 import "./style.css";
 
-class Cards extends React.Component {
+class Cards extends React.PureComponent<CardsProps> {
+  constructor(props: CardsProps) {
+    super(props);
+  }
   render() {
+    if (!this.props.cards.length) {
+      return <div className="cards__not">cards not found</div>;
+    }
+
     return (
       <div className="cards__list">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {this.props.cards.map((card) => (
+          <Card key={card.id} info={card} />
+        ))}
       </div>
     );
   }
