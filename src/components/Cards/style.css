@@ -1,0 +1,16 @@
+.cards__list {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fill,minmax(15rem,auto));
+  padding: 3rem 0;
+  margin: 2rem;
+}
+
+.card {
+  overflow: hidden;
+    border-radius: 2rem;
+    box-shadow: 0.5rem 0.5rem 1rem #740202, -0.5rem -0.5rem 1rem #f7f2ff;
+    background-color: rgba(116,2,2,0.4);
+    box-sizing: border-box;
+    cursor: pointer;
+}
