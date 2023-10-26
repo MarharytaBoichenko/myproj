@@ -1,5 +1,5 @@
 export interface CardsProps {
-  cards: ICard[];
+  cards: ICard[] | null;
 }
 
 export interface CardProps {

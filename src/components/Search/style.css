@@ -7,7 +7,9 @@
   margin: 2rem;
   border-radius: 5rem;
   background: white;
-  box-shadow: 1rem 1rem 3rem #740202, -1rem -1rem 3rem white;
+  box-shadow:
+    1rem 1rem 3rem #740202,
+    -1rem -1rem 3rem white;
   box-sizing: border-box;
 }
 
@@ -17,7 +19,7 @@
   padding: 0 3rem 0.2rem;
   box-sizing: border-box;
   color: #740202;
-  transition: color .2s ease;
+  transition: color 0.2s ease;
   cursor: pointer;
   user-select: none;
   background: white;
@@ -38,6 +40,6 @@
   padding-bottom: 0.3rem;
   outline: none;
   box-sizing: border-box;
-  background-color: rgba(116,2,2,0.2);
+  background-color: rgba(116, 2, 2, 0.2);
   overflow: visible;
 }

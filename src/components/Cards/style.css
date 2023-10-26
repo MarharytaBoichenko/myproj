@@ -1,7 +1,7 @@
 .cards__list {
   display: grid;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fill,minmax(15rem,auto));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, auto));
   padding: 3rem 0;
   margin: 2rem;
 }
@@ -9,8 +9,10 @@
 .card {
   overflow: hidden;
   border-radius: 2rem;
-  box-shadow: 0.5rem 0.5rem 1rem #740202, -0.5rem -0.5rem 1rem white;
-  background-color: rgba(116,2,2,0.4);
+  box-shadow:
+    0.5rem 0.5rem 1rem #740202,
+    -0.5rem -0.5rem 1rem white;
+  background-color: rgba(116, 2, 2, 0.4);
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -22,6 +24,8 @@
   justify-content: center;
   padding: 2rem;
   margin-top: 3rem;
+  box-sizing: border-box;
+  font-size: 4rem;
 }
 
 .card__img {
@@ -51,7 +55,7 @@
   text-overflow: ellipsis;
   font-size: 1.2rem;
   font-weight: 700;
-  color:#740202;
+  color: #740202;
 }
 
 .card__info {

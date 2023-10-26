@@ -3,17 +3,16 @@ import Search from "./Search/Search";
 import Cards from "./Cards/Cards";
 import { MainState } from "../types/main.types";
 import { ICard } from "../types/card.types";
+import Loader from "./Loader/Loader";
 
 class Main extends React.PureComponent {
   state: MainState;
 
   constructor(props: object) {
     super(props);
-
     this.state = {
-      cards: [],
+      cards: null,
     };
-
     this.getCards = this.getCards.bind(this);
   }
 
@@ -24,11 +23,8 @@ class Main extends React.PureComponent {
   async getAllCards() {
     const response = await fetch(`https://rickandmortyapi.com/api/character`);
     const data = await response.json();
-
     if (data.error) return [];
-
     const cards: ICard[] = data.results;
-
     return cards;
   }
 
@@ -43,7 +39,13 @@ class Main extends React.PureComponent {
     return (
       <div className="main">
         <Search />
-        <Cards cards={this.state.cards} />
+        {this.state.cards ? (
+          <Cards cards={this.state.cards} />
+        ) : (
+          <div className="main__loader">
+            <Loader />
+          </div>
+        )}
       </div>
     );
   }
