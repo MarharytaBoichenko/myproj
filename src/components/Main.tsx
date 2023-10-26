@@ -11,8 +11,10 @@ class Main extends React.PureComponent {
   constructor(props: object) {
     super(props);
     this.state = {
+      search: null,
       cards: null,
     };
+
     this.getCards = this.getCards.bind(this);
   }
 
@@ -39,8 +41,8 @@ class Main extends React.PureComponent {
     return (
       <div className="main">
         <Search />
-        {this.state.cards ? (
-          <Cards cards={this.state.cards} />
+        {this.state.search && this.state.cards ? (
+          <Cards cards={this.state.cards} search={this.state.search} />
         ) : (
           <div className="main__loader">
             <Loader />

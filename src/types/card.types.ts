@@ -1,5 +1,8 @@
+import { SearchState } from "./search.types";
+
 export interface CardsProps {
   cards: ICard[] | null;
+  search: SearchState;
 }
 
 export interface CardProps {
