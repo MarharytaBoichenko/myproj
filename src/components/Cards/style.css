@@ -9,7 +9,7 @@
 .card {
   overflow: hidden;
   border-radius: 2rem;
-  box-shadow: 0.5rem 0.5rem 1rem #740202, -0.5rem -0.5rem 1rem #f7f2ff;
+  box-shadow: 0.5rem 0.5rem 1rem #740202, -0.5rem -0.5rem 1rem white;
   background-color: rgba(116,2,2,0.4);
   box-sizing: border-box;
   cursor: pointer;
@@ -22,4 +22,47 @@
   justify-content: center;
   padding: 2rem;
   margin-top: 3rem;
+}
+
+.card__img {
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.card__img img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__content {
+  box-sizing: border-box;
+  padding: 1.5rem;
+}
+
+.card__name {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color:#740202;
+}
+
+.card__info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.card__info u {
+  min-width: 3rem;
+  text-decoration: none;
+  flex-basis: 21.5%;
+  align-self: flex-end;
 }

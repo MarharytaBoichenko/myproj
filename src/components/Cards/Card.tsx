@@ -31,7 +31,7 @@ class Card extends React.PureComponent<CardProps> {
             <u>status:</u> <b>{this.props.info.status}</b>
           </div>
           <div className="card__info">
-            <u>episodes:</u> <b>{this.props.info.episode.length}</b>
+            <u>total episodes:</u> <b>{this.props.info.episode.length}</b>
           </div>
         </div>
       </div>
