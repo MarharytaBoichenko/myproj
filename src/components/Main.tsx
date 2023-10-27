@@ -3,6 +3,7 @@ import Search from "./Search/Search";
 import Cards from "./Cards/Cards";
 import { MainState } from "../types/main.types";
 import { ICard } from "../types/card.types";
+import { SearchState } from "../types/search.types";
 import Loader from "./Loader/Loader";
 
 class Main extends React.PureComponent {
@@ -16,10 +17,19 @@ class Main extends React.PureComponent {
     };
 
     this.getCards = this.getCards.bind(this);
+    this.submitSearch = this.submitSearch.bind(this);
   }
 
   async componentDidMount() {
     await this.getCards();
+  }
+
+  submitSearch(searchState: SearchState | null) {
+    this.setState({
+      ...this.state,
+      search: searchState || null,
+    });
+    console.log(this.state.search);
   }
 
   async getAllCards() {
@@ -40,7 +50,7 @@ class Main extends React.PureComponent {
   render() {
     return (
       <div className="main">
-        <Search />
+        <Search submitSearch={this.submitSearch} />
         {this.state.search && this.state.cards ? (
           <Cards cards={this.state.cards} search={this.state.search} />
         ) : (

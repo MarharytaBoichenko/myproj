@@ -1,13 +1,13 @@
 import React from "react";
 import SearchLine from "./SearchLine";
 import SearchButton from "./SearchButton";
-import { SearchState } from "../../types/search.types";
+import { SearchProps, SearchState } from "../../types/search.types";
 import "./style.css";
 
-class Search extends React.PureComponent {
+class Search extends React.PureComponent<SearchProps> {
   state: SearchState;
 
-  constructor(props: object) {
+  constructor(props: SearchProps) {
     super(props);
 
     this.state = {
@@ -39,6 +39,16 @@ class Search extends React.PureComponent {
 
   async submitSearch(event?: React.SyntheticEvent) {
     if (event) event.preventDefault();
+    this.props.submitSearch(null);
+    await this.wait(1000);
+    this.props.submitSearch(this.state);
+    console.log(this.state);
+  }
+
+  wait(milliseconds: number) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, milliseconds);
+    });
   }
 
   setInputSearch(event: React.ChangeEvent<HTMLInputElement>) {
@@ -50,13 +60,15 @@ class Search extends React.PureComponent {
 
   render() {
     return (
-      <div className="search">
-        <SearchLine
-          search={this.state.search}
-          setInputSearch={this.setInputSearch}
-        />
-        <SearchButton />
-      </div>
+      <form onSubmit={async () => await this.submitSearch()}>
+        <div className="search">
+          <SearchLine
+            search={this.state.search}
+            setInputSearch={this.setInputSearch}
+          />
+          <SearchButton />
+        </div>
+      </form>
     );
   }
 }
