@@ -16,11 +16,11 @@ class Search extends React.PureComponent<SearchProps> {
 
     this.submitSearch = this.submitSearch.bind(this);
     this.saveState = this.saveState.bind(this);
-    this.setInputSearch = this.setInputSearch.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
   async componentDidMount() {
-    const localSearch = localStorage.getItem("search.state");
+    const localSearch = localStorage.getItem("search");
     if (localSearch) this.setState({ ...JSON.parse(localSearch) });
     await this.submitSearch();
   }
@@ -34,12 +34,12 @@ class Search extends React.PureComponent<SearchProps> {
   }
 
   saveState() {
-    localStorage.setItem("search.state", JSON.stringify(this.state));
+    localStorage.setItem("search", JSON.stringify(this.state));
   }
 
   async submitSearch(event?: React.SyntheticEvent) {
     if (event) event.preventDefault();
-    this.props.submitSearch(null);
+    console.log(this.state);
     await this.wait(1000);
     this.props.submitSearch(this.state);
     console.log(this.state);
@@ -51,7 +51,7 @@ class Search extends React.PureComponent<SearchProps> {
     });
   }
 
-  setInputSearch(event: React.ChangeEvent<HTMLInputElement>) {
+  onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       ...this.state,
       search: event.currentTarget.value,
@@ -64,7 +64,7 @@ class Search extends React.PureComponent<SearchProps> {
         <div className="search">
           <SearchLine
             search={this.state.search}
-            setInputSearch={this.setInputSearch}
+            onInputChange={this.onInputChange}
           />
           <SearchButton />
         </div>

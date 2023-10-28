@@ -8,7 +8,7 @@ class SearchLine extends React.PureComponent<SearchLineProps> {
         type="text"
         className="input search__input"
         value={this.props.search}
-        onChange={this.props.setInputSearch}
+        onChange={this.props.onInputChange}
       />
     );
   }

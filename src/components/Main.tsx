@@ -12,47 +12,47 @@ class Main extends React.PureComponent {
   constructor(props: object) {
     super(props);
     this.state = {
-      search: null,
-      cards: null,
+      search: "",
+      cards: [],
     };
 
     this.getCards = this.getCards.bind(this);
-    this.submitSearch = this.submitSearch.bind(this);
   }
 
   async componentDidMount() {
     await this.getCards();
   }
 
-  submitSearch(searchState: SearchState | null) {
-    this.setState({
-      ...this.state,
-      search: searchState || null,
-    });
-    console.log(this.state.search);
-  }
-
-  async getAllCards() {
-    const response = await fetch(`https://rickandmortyapi.com/api/character`);
+  async getAllCards(search: SearchState | "") {
+    let path = `https://rickandmortyapi.com/api/character`;
+    const searchPath = `https://rickandmortyapi.com/api/character?name=${search?.search}`;
+    if (search !== null && search !== "" && search.search !== "") {
+      path = searchPath;
+    }
+    console.log(path);
+    const response = await fetch(path);
     const data = await response.json();
+    console.log(data);
     if (data.error) return [];
     const cards: ICard[] = data.results;
+    console.log(cards);
     return cards;
   }
 
   async getCards() {
     this.setState({
       ...this.state,
-      cards: await this.getAllCards(),
+      cards: await this.getAllCards(this.state.search),
     });
   }
 
   render() {
+    console.log(this.state.cards);
     return (
       <div className="main">
-        <Search submitSearch={this.submitSearch} />
-        {this.state.search && this.state.cards ? (
-          <Cards cards={this.state.cards} search={this.state.search} />
+        <Search submitSearch={this.getAllCards} />
+        {this.state.cards ? (
+          <Cards cards={this.state.cards} />
         ) : (
           <div className="main__loader">
             <Loader />

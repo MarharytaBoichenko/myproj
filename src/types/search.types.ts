@@ -4,9 +4,9 @@ export interface SearchState {
 
 export interface SearchLineProps {
   search: string;
-  setInputSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface SearchProps {
-  submitSearch: (searchState: SearchState | null) => void;
+  submitSearch: (searchState: SearchState) => void;
 }
