@@ -14,13 +14,14 @@ class Main extends React.PureComponent {
     this.state = {
       search: "",
       cards: [],
+      loading: false,
     };
 
     this.getCards = this.getCards.bind(this);
   }
 
   async componentDidMount() {
-    await this.getCards();
+    await this.getCards(this.state.search);
   }
 
   async getAllCards(search: SearchState | "") {
@@ -30,19 +31,27 @@ class Main extends React.PureComponent {
       path = searchPath;
     }
     console.log(path);
+    this.setState({
+      ...this.state,
+      loading: true,
+    });
     const response = await fetch(path);
     const data = await response.json();
     console.log(data);
     if (data.error) return [];
     const cards: ICard[] = data.results;
     console.log(cards);
+    this.setState({
+      ...this.state,
+      loading: false,
+    });
     return cards;
   }
 
-  async getCards() {
+  async getCards(search: SearchState | "") {
     this.setState({
       ...this.state,
-      cards: await this.getAllCards(this.state.search),
+      cards: await this.getAllCards(search),
     });
   }
 
@@ -50,8 +59,8 @@ class Main extends React.PureComponent {
     console.log(this.state.cards);
     return (
       <div className="main">
-        <Search submitSearch={this.getAllCards} />
-        {this.state.cards ? (
+        <Search submitSearch={this.getCards} />
+        {this.state.loading == false ? (
           <Cards cards={this.state.cards} />
         ) : (
           <div className="main__loader">
