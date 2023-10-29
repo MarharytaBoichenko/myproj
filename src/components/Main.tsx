@@ -5,6 +5,7 @@ import { MainState } from "../types/main.types";
 import { ICard } from "../types/card.types";
 import { SearchState } from "../types/search.types";
 import Loader from "./Loader/Loader";
+import ErrorTest from "./Error/ErrorTest";
 
 class Main extends React.PureComponent {
   state: MainState;
@@ -16,31 +17,23 @@ class Main extends React.PureComponent {
       cards: [],
       loading: false,
     };
-
     this.getCards = this.getCards.bind(this);
-  }
-
-  async componentDidMount() {
-    await this.getCards(this.state.search);
   }
 
   async getAllCards(search: SearchState | "") {
     let path = `https://rickandmortyapi.com/api/character`;
     const searchPath = `https://rickandmortyapi.com/api/character?name=${search?.search}`;
-    if (search !== null && search !== "" && search.search !== "") {
+    if (search !== "" && search.search !== "") {
       path = searchPath;
     }
-    console.log(path);
     this.setState({
       ...this.state,
       loading: true,
     });
     const response = await fetch(path);
     const data = await response.json();
-    console.log(data);
-    if (data.error) return [];
+    if (data.error) return null;
     const cards: ICard[] = data.results;
-    console.log(cards);
     this.setState({
       ...this.state,
       loading: false,
@@ -56,10 +49,10 @@ class Main extends React.PureComponent {
   }
 
   render() {
-    console.log(this.state.cards);
     return (
       <div className="main">
         <Search submitSearch={this.getCards} />
+        <ErrorTest />
         {this.state.loading == false ? (
           <Cards cards={this.state.cards} />
         ) : (

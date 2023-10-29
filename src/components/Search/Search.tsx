@@ -39,10 +39,8 @@ class Search extends React.PureComponent<SearchProps> {
 
   async submitSearch(event?: React.SyntheticEvent) {
     if (event) event.preventDefault();
-    console.log(this.state);
     await this.wait(1000);
     this.props.submitSearch(this.state);
-    console.log(this.state);
   }
 
   wait(milliseconds: number) {

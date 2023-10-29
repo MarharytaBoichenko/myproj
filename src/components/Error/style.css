@@ -1,0 +1,6 @@
+.error__boundary {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: rgba(116, 2, 2, 0.4);
+}

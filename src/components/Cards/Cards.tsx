@@ -8,7 +8,7 @@ class Cards extends React.PureComponent<CardsProps> {
     super(props);
   }
   render() {
-    if (!this.props.cards.length) {
+    if (this.props.cards == null) {
       return <div className="cards__not">cards not found</div>;
     }
 
