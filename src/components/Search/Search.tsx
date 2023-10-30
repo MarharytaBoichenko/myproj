@@ -11,54 +11,33 @@ class Search extends React.PureComponent<SearchProps> {
     super(props);
 
     this.state = {
-      search: "",
+      search: localStorage.getItem("search") || "",
     };
 
     this.submitSearch = this.submitSearch.bind(this);
-    this.saveState = this.saveState.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
 
   async componentDidMount() {
-    const localSearch = localStorage.getItem("search");
-    if (localSearch) this.setState({ ...JSON.parse(localSearch) });
     await this.submitSearch();
-  }
-
-  componentDidUpdate() {
-    this.saveState();
-  }
-
-  componentWillUnmount() {
-    this.saveState();
-  }
-
-  saveState() {
-    localStorage.setItem("search", JSON.stringify(this.state));
   }
 
   async submitSearch(event?: React.SyntheticEvent) {
     if (event) event.preventDefault();
-    await this.wait(1000);
     this.props.submitSearch(this.state);
   }
 
-  wait(milliseconds: number) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, milliseconds);
-    });
-  }
-
   onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.currentTarget.value;
     this.setState({
-      ...this.state,
       search: event.currentTarget.value,
     });
+    localStorage.setItem("search", value);
   }
 
   render() {
     return (
-      <form onSubmit={async () => await this.submitSearch()}>
+      <form onSubmit={this.submitSearch}>
         <div className="search">
           <SearchLine
             search={this.state.search}
