@@ -1,53 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchLine from "./SearchLine";
 import SearchButton from "./SearchButton";
-import { SearchProps, SearchState } from "../../types/search.types";
 import "./style.css";
 
-class Search extends React.PureComponent<SearchProps> {
-  state: SearchState;
+const Search = () => {
+  const [localSearch, setLocalSearch] = useState("");
 
-  constructor(props: SearchProps) {
-    super(props);
+  React.useEffect(() => {
+    const lsSearch = localStorage.getItem("search");
+    if (!lsSearch) return;
+    setLocalSearch(lsSearch);
+  }, []);
 
-    this.state = {
-      search: localStorage.getItem("search") || "",
-    };
+  const submitSearchParams = (search: string) => {
+    localStorage.setItem("search", search);
+  };
 
-    this.submitSearch = this.submitSearch.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
-  }
+  const submitSearch = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    submitSearchParams(localSearch);
+  };
 
-  async componentDidMount() {
-    await this.submitSearch();
-  }
-
-  async submitSearch(event?: React.SyntheticEvent) {
-    if (event) event.preventDefault();
-    this.props.submitSearch(this.state);
-  }
-
-  onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const value = event.currentTarget.value;
-    this.setState({
-      search: event.currentTarget.value,
-    });
-    localStorage.setItem("search", value);
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.submitSearch}>
-        <div className="search">
-          <SearchLine
-            search={this.state.search}
-            onInputChange={this.onInputChange}
-          />
-          <SearchButton />
-        </div>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={submitSearch}>
+      <div className="search">
+        <SearchLine
+          search={localSearch}
+          onInputChange={(event) => setLocalSearch(event.currentTarget.value)}
+        />
+        <SearchButton />
+      </div>
+    </form>
+  );
+};
 
 export default Search;

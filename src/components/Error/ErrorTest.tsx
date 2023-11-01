@@ -1,32 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
-interface Props {
-  error: boolean;
-}
+const ErrorTest = function () {
+  const [error, setError] = useState(false);
 
-class ErrorTest extends React.Component {
-  state: Props;
-
-  constructor(props: object) {
-    super(props);
-    this.state = { error: false };
-    this.handleClick = this.handleClick.bind(this);
+  function handleClick() {
+    setError(true);
   }
 
-  handleClick = () => {
-    this.setState({ error: true });
-  };
-
-  render() {
-    if (this.state.error) {
-      throw new Error("Oops, something went wrong!");
-    }
-    return (
-      <button onClick={this.handleClick} className="button search__button">
-        Test Error
-      </button>
-    );
+  if (error) {
+    throw new Error("Oops, something went wrong!");
   }
-}
+
+  return (
+    <button onClick={handleClick} className="button search__button">
+      Test Error
+    </button>
+  );
+};
 
 export default ErrorTest;
