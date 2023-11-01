@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Search from "./Search/Search";
 import Cards from "./Cards/Cards";
 import { ICard } from "../types/card.types";
@@ -14,20 +14,21 @@ const Main = () => {
   const search = localStorage.getItem("search") || "";
   const page = "1";
 
-  React.useEffect(() => {
-    const loadCards = async () => {
-      setIsLoading(true);
-      const [cards, totalPages] = await cardApi.uploadCards(page, search);
-      setCards(cards);
-      setIsLoading(false);
-      setTotalPages(totalPages);
-    };
-    loadCards();
+  const loadCards = useCallback(async () => {
+    setIsLoading(true);
+    const [cards, totalPages] = await cardApi.uploadCards(page, search);
+    setCards(cards);
+    setIsLoading(false);
+    setTotalPages(totalPages);
   }, [page, search]);
+
+  React.useEffect(() => {
+    loadCards();
+  }, [loadCards, page, search]);
 
   return (
     <div className="main">
-      <Search />
+      <Search submitSearch={loadCards} />
       <ErrorTest />
       {!isLoading ? (
         <Cards cards={cards} />

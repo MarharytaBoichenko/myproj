@@ -8,5 +8,5 @@ export interface SearchLineProps {
 }
 
 export interface SearchProps {
-  submitSearch: (searchState: SearchState) => void;
+  submitSearch: (searchState: string) => void;
 }

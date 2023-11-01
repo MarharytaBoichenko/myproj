@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import SearchLine from "./SearchLine";
 import SearchButton from "./SearchButton";
+import { SearchProps } from "../../types/search.types";
 import "./style.css";
 
-const Search = () => {
+const Search = (props: SearchProps) => {
   const [localSearch, setLocalSearch] = useState("");
 
   React.useEffect(() => {
@@ -12,22 +13,21 @@ const Search = () => {
     setLocalSearch(lsSearch);
   }, []);
 
-  const submitSearchParams = (search: string) => {
-    localStorage.setItem("search", search);
-  };
-
   const submitSearch = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    submitSearchParams(localSearch);
+    props.submitSearch(localSearch);
+  };
+
+  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value;
+    setLocalSearch(value);
+    localStorage.setItem("search", value);
   };
 
   return (
     <form onSubmit={submitSearch}>
       <div className="search">
-        <SearchLine
-          search={localSearch}
-          onInputChange={(event) => setLocalSearch(event.currentTarget.value)}
-        />
+        <SearchLine search={localSearch} onInputChange={onInputChange} />
         <SearchButton />
       </div>
     </form>
