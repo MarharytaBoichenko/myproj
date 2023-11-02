@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import { CardsProps } from "../../types/card.types";
+import { Outlet } from "react-router-dom";
 import "./style.css";
 
 const Cards = ({ cards }: CardsProps) => {
@@ -9,10 +10,13 @@ const Cards = ({ cards }: CardsProps) => {
   }
 
   return (
-    <div className="cards__list">
-      {cards.map((card) => (
-        <Card key={card.id} info={card} />
-      ))}
+    <div className="cards__page">
+      <div className="cards__list card__column">
+        {cards.map((card) => (
+          <Card key={card.id} info={card} />
+        ))}
+      </div>
+      <Outlet />
     </div>
   );
 };

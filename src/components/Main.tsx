@@ -10,7 +10,6 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [cards, setCards] = React.useState<ICard[]>([]);
-  //const [card, setCard] = React.useState<ICard | null>(null);
   const search = localStorage.getItem("search") || "";
   const page = "1";
 

@@ -3,7 +3,7 @@ export interface CardsProps {
 }
 
 export interface CardProps {
-  info: ICard;
+  info: ICard | null;
 }
 
 export interface ICard {

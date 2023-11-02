@@ -1,10 +1,18 @@
 import React from "react";
 import { CardProps } from "../../types/card.types";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const Card = ({ info }: CardProps) => {
+  if (info == null) {
+    return <div className="cards__not">card not found</div>;
+  }
   return (
-    <div className="card">
+    <Link
+      to={("/details/" + info.id).toString()}
+      key={info.id}
+      className="card"
+    >
       <div className="card__img">
         <img src={info.image} alt="image" />
       </div>
@@ -33,7 +41,7 @@ const Card = ({ info }: CardProps) => {
           <u>total episodes:</u> <b>{info.episode.length}</b>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
