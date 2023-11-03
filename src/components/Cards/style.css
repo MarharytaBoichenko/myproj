@@ -4,6 +4,7 @@
   grid-template-columns: repeat(auto-fill, minmax(15rem, auto));
   padding: 3rem 0;
   margin: 2rem;
+  text-decoration: none;
 }
 
 .card {
@@ -83,7 +84,8 @@
 .card__page {
   padding: 3rem 0;
   margin: 2rem;
-  background: rgba(116, 2, 2, 0.4);
+  background: rgba(116, 2, 2, 0.2);
+  border-radius: 2rem;
 }
 
 .card__page img {
@@ -94,4 +96,46 @@
   flex-basis: 100%;
   flex: 1;
   height: 48%;
+}
+
+.card__drop {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  position: relative;
+  z-index: 1;
+  margin: 20px auto;
+  cursor: pointer;
+}
+.card__drop:before {
+  content: "+";
+  color: #740202;
+  position: absolute;
+  z-index: 2;
+  transform: rotate(45deg);
+  font-size: 50px;
+  line-height: 1;
+  top: -5px;
+  left: 6px;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+}
+.card__drop:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background: #740202;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+  transform: scale(0.01);
+}
+.card__drop:hover:after {
+  transform: scale(1);
+}
+.card__drop:hover:before {
+  transform: scale(0.8) rotate(45deg);
+  color: #fff;
 }

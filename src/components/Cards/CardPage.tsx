@@ -4,6 +4,7 @@ import cardApi from "../API/cardApi";
 import { ICard } from "../../types/card.types";
 import Loader from "../Loader/Loader";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const CardPage = () => {
@@ -31,6 +32,7 @@ const CardPage = () => {
           <Loader />
         </div>
       )}
+      <Link to={"/"} className="card__drop"></Link>
     </div>
   );
 };
