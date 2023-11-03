@@ -2,12 +2,21 @@ import React from "react";
 import { CardProps } from "../../types/card.types";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import "./style.css";
 
 const Card = ({ info }: CardProps) => {
   const params = useParams();
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get("page") || "1";
+
   if (info == null) {
     return <div className="cards__not">card not found</div>;
+  }
+
+  let link = ("/details/" + info.id).toString();
+  if (page !== "1") {
+    link = ("/details/" + info.id + "?page=" + page).toString();
   }
 
   const renderDiv = () => (
@@ -44,7 +53,7 @@ const Card = ({ info }: CardProps) => {
   );
 
   return params.id == undefined ? (
-    <Link to={("/details/" + info.id).toString()} className="card">
+    <Link to={link} className="card">
       {renderDiv()}
     </Link>
   ) : (

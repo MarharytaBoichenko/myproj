@@ -1,0 +1,25 @@
+.pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(116, 2, 2, 0.4);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.page--selected {
+  cursor: default;
+  pointer-events: none;
+  background-color: rgba(116, 2, 2, 0.8);
+}

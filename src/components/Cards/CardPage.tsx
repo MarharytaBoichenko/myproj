@@ -5,12 +5,18 @@ import { ICard } from "../../types/card.types";
 import Loader from "../Loader/Loader";
 import Card from "./Card";
 import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import "./style.css";
 
 const CardPage = () => {
   const params = useParams();
+  const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const [card, setCard] = React.useState<ICard | null>(null);
+  const page = searchParams.get("page") || "1";
+
+  let link = "/";
+  if (page !== "1") link = "/?page=" + page;
 
   const loadCard = useCallback(async () => {
     setIsLoading(true);
@@ -25,7 +31,7 @@ const CardPage = () => {
 
   return (
     <div className="card__page card__column">
-      <Link to={"/"} className="card__drop"></Link>
+      <Link to={link} className="card__drop"></Link>
       {!isLoading ? (
         <Card info={card} />
       ) : (
