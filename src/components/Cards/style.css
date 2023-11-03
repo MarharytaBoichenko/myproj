@@ -84,7 +84,6 @@
 .card__page {
   padding: 3rem 0;
   margin: 2rem;
-  background: rgba(116, 2, 2, 0.2);
   border-radius: 2rem;
 }
 
@@ -115,8 +114,8 @@
   transform: rotate(45deg);
   font-size: 50px;
   line-height: 1;
-  top: -5px;
-  left: 6px;
+  top: 10px;
+  left: 10px;
   transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
 }
 .card__drop:after {

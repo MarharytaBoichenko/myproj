@@ -25,6 +25,7 @@ const CardPage = () => {
 
   return (
     <div className="card__page card__column">
+      <Link to={"/"} className="card__drop"></Link>
       {!isLoading ? (
         <Card info={card} />
       ) : (
@@ -32,7 +33,6 @@ const CardPage = () => {
           <Loader />
         </div>
       )}
-      <Link to={"/"} className="card__drop"></Link>
     </div>
   );
 };
