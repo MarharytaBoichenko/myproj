@@ -17,7 +17,9 @@ const Cards = ({ cards }: CardsProps) => {
 
   let link = "/";
   if (page !== "1") link = "/?page=" + page;
-  const cardsList = cards.map((card) => <Card key={card.id} info={card} />);
+  const cardsList = cards.map((card) => (
+    <Card key={card.id} info={card} details={false} />
+  ));
 
   return (
     <div className="cards__page">

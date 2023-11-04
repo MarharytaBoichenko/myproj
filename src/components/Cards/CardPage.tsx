@@ -33,7 +33,7 @@ const CardPage = () => {
     <div className="card__page card__column">
       <Link to={link} className="card__drop"></Link>
       {!isLoading ? (
-        <Card info={card} />
+        <Card info={card} details={true} />
       ) : (
         <div className="main__loader">
           <Loader />

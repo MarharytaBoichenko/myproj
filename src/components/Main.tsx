@@ -15,18 +15,19 @@ const Main = () => {
   const [cards, setCards] = React.useState<ICard[]>([]);
   const search = localStorage.getItem("search") || "";
   const page = searchParams.get("page") || "1";
+  const limit = searchParams.get("limit") || "30";
 
   const loadCards = useCallback(async () => {
     setIsLoading(true);
-    const [cards, totalPages] = await cardApi.uploadCards(page, search);
+    const [cards, totalPages] = await cardApi.uploadCards(page, search, limit);
     setCards(cards);
     setIsLoading(false);
     setTotalPages(totalPages);
-  }, [page, search]);
+  }, [page, search, limit]);
 
   React.useEffect(() => {
     loadCards();
-  }, [loadCards, page, search]);
+  }, [loadCards, page, search, limit]);
 
   return (
     <div className="main">

@@ -4,25 +4,22 @@ export interface CardsProps {
 
 export interface CardProps {
   info: ICard | null;
+  details: boolean;
 }
 
 export interface ICard {
   id: number;
-  name: string;
-  status: string;
-  species: string;
-  type: string;
+  firstName: string;
+  lastName: string;
+  age: string;
+  username: string;
+  birthDate: string;
+  height: string;
+  weight: string;
   gender: string;
-  origin: {
-    name: string;
-    url: string;
-  };
-  location: {
-    name: string;
-    url: string;
-  };
   image: string;
-  episode: string[];
-  url: string;
-  created: string;
+  email: string;
+  phone: string;
+  bloodGroup: string;
+  eyeColor: string;
 }

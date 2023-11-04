@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import "./style.css";
 
-const Card = ({ info }: CardProps) => {
+const Card = ({ info, details }: CardProps) => {
   const params = useParams();
   const [searchParams] = useSearchParams();
   const page = searchParams.get("page") || "1";
@@ -19,35 +19,63 @@ const Card = ({ info }: CardProps) => {
     link = ("/details/" + info.id + "?page=" + page).toString();
   }
 
+  const cardDetails = () => {
+    return details ? (
+      <>
+        <div className="card__info">
+          <u>email:</u>
+          <b>{info.email}</b>
+        </div>
+        <div className="card__info">
+          <u>phone:</u>
+          <b>{info.phone}</b>
+        </div>
+        <div className="card__info">
+          <u>bloodGroup:</u>
+          <b>{info.bloodGroup}</b>
+        </div>
+        <div className="card__info">
+          <u>eyeColor:</u>
+          <b>{info.eyeColor}</b>
+        </div>
+      </>
+    ) : (
+      ""
+    );
+  };
+
   const renderDiv = () => (
     <>
       <div className="card__img">
         <img src={info.image} alt="image" />
       </div>
       <div className="card__content">
-        <div className="card__name">{info.name}</div>
+        <div className="card__name">{info.firstName + " " + info.lastName}</div>
         <div className="card__info">
-          <u>species:</u>
-          <b>{info.species}</b>
+          <u>age:</u>
+          <b>{info.age}</b>
         </div>
         <div className="card__info">
-          <u>gender:</u> <b>{info.gender}</b>
+          <u>gender:</u>
+          <b>{info.gender}</b>
         </div>
         <div className="card__info">
-          <u>location:</u> <b>{info.location.name}</b>
+          <u>user name:</u>
+          <b>{info.username}</b>
         </div>
         <div className="card__info">
-          <u>created:</u> <b>{info.created.substring(0, 10)}</b>
+          <u>height:</u>
+          <b>{info.height}</b>
         </div>
         <div className="card__info">
-          <u>origin:</u> <b>{info.origin.name}</b>
+          <u>weight:</u>
+          <b>{info.weight}</b>
         </div>
         <div className="card__info">
-          <u>status:</u> <b>{info.status}</b>
+          <u>birth date:</u>
+          <b>{info.birthDate}</b>
         </div>
-        <div className="card__info">
-          <u>total episodes:</u> <b>{info.episode.length}</b>
-        </div>
+        {cardDetails()}
       </div>
     </>
   );
