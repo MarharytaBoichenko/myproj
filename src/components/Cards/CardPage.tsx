@@ -14,9 +14,10 @@ const CardPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [card, setCard] = React.useState<ICard | null>(null);
   const page = searchParams.get("page") || "1";
+  const limit = searchParams.get("limit") || "30";
 
-  let link = "/";
-  if (page !== "1") link = "/?page=" + page;
+  let link = "/?page=" + page;
+  if (limit !== "30") link = link + "&limit=" + limit;
 
   const loadCard = useCallback(async () => {
     setIsLoading(true);

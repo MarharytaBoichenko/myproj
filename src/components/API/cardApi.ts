@@ -10,14 +10,11 @@ export default {
   ): Promise<[ICard[], number]> => {
     const params: SearchParams = {};
 
+    params.q = search;
     if (limit) params.limit = limit;
     if (page) params.skip = ((+page - 1) * +limit).toString();
-    params.q = search;
 
     const searchParams = new URLSearchParams(params);
-    console.log(
-      `https://dummyjson.com/users/search?${searchParams.toString()}`,
-    );
 
     const response = await fetch(
       `https://dummyjson.com/users/search?${searchParams.toString()}`,

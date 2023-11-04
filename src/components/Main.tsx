@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import Search from "./Search/Search";
 import Cards from "./Cards/Cards";
 import Pagination from "./Pagination/Pagination";
+import LimitPage from "./Pagination/LimitPage";
 import { ICard } from "../types/card.types";
 import cardApi from "./API/cardApi";
 import Loader from "./Loader/Loader";
@@ -33,6 +34,7 @@ const Main = () => {
     <div className="main">
       <Search submitSearch={loadCards} />
       <ErrorTest />
+      <LimitPage />
       <Pagination totalPages={totalPages} />
       {!isLoading ? (
         <Cards cards={cards} />

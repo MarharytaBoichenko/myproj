@@ -9,15 +9,14 @@ const Card = ({ info, details }: CardProps) => {
   const params = useParams();
   const [searchParams] = useSearchParams();
   const page = searchParams.get("page") || "1";
+  const limit = searchParams.get("limit") || "30";
 
   if (info == null) {
     return <div className="cards__not">card not found</div>;
   }
 
-  let link = ("/details/" + info.id).toString();
-  if (page !== "1") {
-    link = ("/details/" + info.id + "?page=" + page).toString();
-  }
+  let link = ("/details/" + info.id).toString() + "?page=" + page;
+  if (limit !== "30") link = link + "&limit=" + limit;
 
   const cardDetails = () => {
     return details ? (
