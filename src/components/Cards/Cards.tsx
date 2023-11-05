@@ -12,7 +12,7 @@ const Cards = ({ cards }: CardsProps) => {
   const [searchParams] = useSearchParams();
   const page = searchParams.get("page") || "1";
   const limit = searchParams.get("limit") || "30";
-  if (cards == null) {
+  if (cards == null || cards?.length == 0) {
     return <div className="cards__not">cards not found</div>;
   }
 
