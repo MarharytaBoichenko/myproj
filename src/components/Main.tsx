@@ -7,7 +7,7 @@ import { ICard } from "../types/card.types";
 import cardApi from "./API/cardApi";
 import Loader from "./Loader/Loader";
 import ErrorTest from "./Error/ErrorTest";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link, useParams } from "react-router-dom";
 
 const Main = () => {
   const [searchParams] = useSearchParams();
@@ -17,6 +17,7 @@ const Main = () => {
   const search = localStorage.getItem("search") || "";
   const page = searchParams.get("page") || "1";
   const limit = searchParams.get("limit") || "30";
+  const params = useParams();
 
   const loadCards = useCallback(async () => {
     setIsLoading(true);
@@ -30,12 +31,30 @@ const Main = () => {
     loadCards();
   }, [loadCards, page, search, limit]);
 
-  return (
-    <div className="main">
+  let link = "/?page=" + page;
+  if (limit !== "30") link = link + "&limit=" + limit;
+  const headerMain = () => (
+    <>
       <Search submitSearch={loadCards} />
       <ErrorTest />
       <LimitPage />
       <Pagination totalPages={totalPages} />
+    </>
+  );
+
+  return (
+    <div className="main">
+      {params.id == undefined ? (
+        <div className="header__main">{headerMain()}</div>
+      ) : (
+        <Link
+          to={link}
+          className="header__main"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          {headerMain()}
+        </Link>
+      )}
       {!isLoading ? (
         <Cards cards={cards} />
       ) : (
