@@ -30,11 +30,11 @@ const Card = ({ info, details }: CardProps) => {
           <b>{info.phone}</b>
         </div>
         <div className="card__info">
-          <u>bloodGroup:</u>
+          <u>blood group:</u>
           <b>{info.bloodGroup}</b>
         </div>
         <div className="card__info">
-          <u>eyeColor:</u>
+          <u>eye color:</u>
           <b>{info.eyeColor}</b>
         </div>
       </>

@@ -10,11 +10,11 @@ import ErrorTest from "./Error/ErrorTest";
 import { useSearchParams, Link, useParams } from "react-router-dom";
 
 const Main = () => {
-  const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
-  const [cards, setCards] = React.useState<ICard[]>([]);
+  const [cards, setCards] = React.useState<ICard[] | null>(null);
   const search = localStorage.getItem("search") || "";
+  const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get("page") || "1";
   const limit = searchParams.get("limit") || "30";
   const params = useParams();
@@ -29,7 +29,10 @@ const Main = () => {
 
   React.useEffect(() => {
     loadCards();
-  }, [loadCards, page, search, limit]);
+    if (searchParams.has("page")) searchParams.set("page", page);
+    else searchParams.append("page", page);
+    setSearchParams(searchParams);
+  }, [loadCards, page, search, limit, searchParams, setSearchParams]);
 
   let link = "/?page=" + page;
   if (limit !== "30") link = link + "&limit=" + limit;
