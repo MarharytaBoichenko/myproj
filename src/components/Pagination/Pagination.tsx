@@ -19,12 +19,12 @@ const Pagination = ({ totalPages }: PaginationProps) => {
   const pageLinks = [];
   for (let i = 1; i <= totalPages; i++) {
     const key = i.toString();
-    const classNM = ["page"];
-    if (page === key) classNM.push("page--selected");
+    const className = ["page"];
+    if (page === key) className.push("page--selected");
 
     pageLinks.push(
       <div
-        className={classNM.join(" ")}
+        className={className.join(" ")}
         key={key}
         onClick={() => applyPageParams(key)}
       >
