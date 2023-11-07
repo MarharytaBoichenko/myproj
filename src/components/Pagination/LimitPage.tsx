@@ -7,10 +7,12 @@ const LimitPage = () => {
   let limit = searchParams.get("limit") || "30";
 
   const applyLimitParams = (limit: string) => {
-    if (searchParams.has("limit")) searchParams.set("limit", limit);
-    else searchParams.append("limit", limit);
-    if (searchParams.has("page")) searchParams.set("page", "1");
-    else searchParams.append("page", "1");
+    if (searchParams.has("limit")) {
+      searchParams.set("limit", limit);
+    } else searchParams.append("limit", limit);
+    if (searchParams.has("page")) {
+      searchParams.set("page", "1");
+    } else searchParams.append("page", "1");
     setSearchParams(searchParams);
   };
 

@@ -4,7 +4,7 @@ import Cards from "./Cards/Cards";
 import Pagination from "./Pagination/Pagination";
 import LimitPage from "./Pagination/LimitPage";
 import { ICard } from "../types/card.types";
-import cardApi from "./API/cardApi";
+import cardsApi from "./API/cardsApi";
 import Loader from "./Loader/Loader";
 import ErrorTest from "./Error/ErrorTest";
 import { useSearchParams, Link, useParams } from "react-router-dom";
@@ -21,7 +21,7 @@ const Main = () => {
 
   const loadCards = useCallback(async () => {
     setIsLoading(true);
-    const [cards, totalPages] = await cardApi.uploadCards(page, search, limit);
+    const [cards, totalPages] = await cardsApi.uploadCards(page, search, limit);
     setCards(cards);
     setIsLoading(false);
     setTotalPages(totalPages);

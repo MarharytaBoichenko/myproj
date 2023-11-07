@@ -11,8 +11,9 @@ const Pagination = ({ totalPages }: PaginationProps) => {
   const page = searchParams.get("page") || "1";
 
   const applyPageParams = (page: string) => {
-    if (searchParams.has("page")) searchParams.set("page", page);
-    else searchParams.append("page", page);
+    if (searchParams.has("page")) {
+      searchParams.set("page", page);
+    } else searchParams.append("page", page);
     setSearchParams(searchParams);
   };
 

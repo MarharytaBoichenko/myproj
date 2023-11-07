@@ -10,7 +10,10 @@ export function Routing(): JSX.Element {
           <Route path="/" element={<Layout />}>
             <Route path="details/:id" element={<CardPage />} />
           </Route>
-          <Route path="/*" element={<h2>Page not exists</h2>} />
+          <Route
+            path="/*"
+            element={<h2 className="error__boundary">Page not exists</h2>}
+          />
         </Routes>
       </>
     </BrowserRouter>
