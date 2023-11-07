@@ -30,6 +30,7 @@ const LimitPage = () => {
       <input
         type="text"
         className="input limit__input"
+        placeholder="30"
         onChange={onInputChange}
       />
       <button type="submit" className="button search__button">

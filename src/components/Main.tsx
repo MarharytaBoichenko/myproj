@@ -8,12 +8,14 @@ import cardsApi from "./API/cardsApi";
 import Loader from "./Loader/Loader";
 import ErrorTest from "./Error/ErrorTest";
 import { useSearchParams, Link, useParams } from "react-router-dom";
+import { CardsContext, SearchContext } from "./Context/context";
 
 const Main = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
-  const [cards, setCards] = React.useState<ICard[] | null>(null);
-  const search = localStorage.getItem("search") || "";
+  const [cards, setCards] = useState<ICard[] | null>(null);
+  const [search, setSearch] = useState(localStorage.getItem("search") || "");
+  //const search = localStorage.getItem("search") || "";
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get("page") || "1";
   const limit = searchParams.get("limit") || "30";
@@ -38,7 +40,9 @@ const Main = () => {
   if (limit !== "30") link = link + "&limit=" + limit;
   const headerMain = () => (
     <>
-      <Search submitSearch={loadCards} />
+      <SearchContext.Provider value={[search, setSearch]}>
+        <Search submitSearch={loadCards} />
+      </SearchContext.Provider>
       <ErrorTest />
       <LimitPage />
       <Pagination totalPages={totalPages} />
