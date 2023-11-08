@@ -1,13 +1,15 @@
 import React from "react";
 import Card from "./Card";
-import { CardsProps } from "../../types/card.types";
 import { Outlet } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
+import { CardsContext } from "../Context/context";
+import { useContext } from "react";
 import "./style.css";
 
-const Cards = ({ cards }: CardsProps) => {
+const Cards = () => {
+  const cards = useContext(CardsContext);
   const params = useParams();
   const [searchParams] = useSearchParams();
   const page = searchParams.get("page") || "1";

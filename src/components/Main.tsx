@@ -15,7 +15,6 @@ const Main = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [cards, setCards] = useState<ICard[] | null>(null);
   const [search, setSearch] = useState(localStorage.getItem("search") || "");
-  //const search = localStorage.getItem("search") || "";
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get("page") || "1";
   const limit = searchParams.get("limit") || "30";
@@ -62,13 +61,15 @@ const Main = () => {
           {headerMain()}
         </Link>
       )}
-      {!isLoading ? (
-        <Cards cards={cards} />
-      ) : (
-        <div className="main__loader">
-          <Loader />
-        </div>
-      )}
+      <CardsContext.Provider value={cards}>
+        {!isLoading ? (
+          <Cards />
+        ) : (
+          <div className="main__loader">
+            <Loader />
+          </div>
+        )}
+      </CardsContext.Provider>
     </div>
   );
 };
