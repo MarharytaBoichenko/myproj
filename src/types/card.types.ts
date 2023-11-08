@@ -12,14 +12,14 @@ export interface ICard {
   firstName: string;
   lastName: string;
   age: string;
-  username: string;
   birthDate: string;
   height: string;
   weight: string;
   gender: string;
   image: string;
-  email: string;
-  phone: string;
-  bloodGroup: string;
-  eyeColor: string;
+  username?: string;
+  email?: string;
+  phone?: string;
+  bloodGroup?: string;
+  eyeColor?: string;
 }

@@ -15,17 +15,13 @@ export default {
     if (page) params.skip = ((+page - 1) * +limit).toString();
 
     const searchParams = new URLSearchParams(params);
+    const baseUrl = "https://dummyjson.com/users/";
 
-    const response = await fetch(
-      `https://dummyjson.com/users/search?${searchParams.toString()}`,
-    );
+    const response = await fetch(`${baseUrl}search?${searchParams.toString()}`);
     const data = await response.json();
-
     if (data.error) return [[], 0];
-
     const cards: ICard[] = data.users;
     const totalPages: number = data.total / data.limit;
-
     return [cards, totalPages];
   },
 };
