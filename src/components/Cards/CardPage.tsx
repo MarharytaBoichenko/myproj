@@ -31,7 +31,7 @@ const CardPage = () => {
   }, [loadCard, params]);
 
   return (
-    <div className="card__page card__column">
+    <div className="card__page card__column" data-testid="detail">
       <Link to={link} className="card__drop"></Link>
       {!isLoading ? (
         <Card info={card} details={true} />

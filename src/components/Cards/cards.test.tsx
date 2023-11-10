@@ -32,7 +32,7 @@ describe("Tests for the Card List component", () => {
     },
   ];
 
-  it("renders 2 cards", () => {
+  it("renders 2 cards", async () => {
     render(
       <BrowserRouter>
         <CardsContext.Provider value={cards}>
@@ -40,11 +40,14 @@ describe("Tests for the Card List component", () => {
         </CardsContext.Provider>
       </BrowserRouter>,
     );
+
+    const cardCount = screen.getAllByAltText("image");
+    expect(cardCount).toHaveLength(2);
     expect(screen.getByText(/Terry Medhurst/)).toBeInTheDocument();
     expect(screen.getByText(/Sheldon Quigley/)).toBeInTheDocument();
   });
 
-  it("returns no cards found on wrong search", () => {
+  it("returns no cards found on wrong search", async () => {
     render(
       <BrowserRouter>
         <CardsContext.Provider value={[]}>

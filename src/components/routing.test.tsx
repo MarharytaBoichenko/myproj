@@ -16,7 +16,7 @@ describe("Routing App", () => {
     expect(mainClass).toBeInTheDocument();
   });
 
-  test("landing on a bad page", () => {
+  test("landing on a bad page", async () => {
     const badRoute = "/some/bad/route";
     render(
       <MemoryRouter initialEntries={[badRoute]}>
