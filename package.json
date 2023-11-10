@@ -20,7 +20,8 @@
     }
   },
   "lint-staged": {
-    "*.(ts|tsx|js|jsx)": "prettier --write --ignore-unknown"
+    "*.(ts|tsx|js|jsx)": ["prettier --write --ignore-unknown",
+    "vitest related --run"]
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
@@ -39,6 +40,7 @@
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "@vitest/coverage-v8": "^0.34.6",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",

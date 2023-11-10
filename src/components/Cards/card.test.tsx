@@ -58,6 +58,10 @@ describe("Tests for the Card component", () => {
     expect(screen.getByText(card.birthDate)).toBeInTheDocument();
   });
 
+  it("renders card with birth date", () => {
+    expect(screen.getByText(card.height)).toBeInTheDocument();
+  });
+
   it("clicking on a card opens a detailed and clicking triggers an additional API call", async () => {
     const { container } = render(
       <BrowserRouter>
@@ -71,5 +75,14 @@ describe("Tests for the Card component", () => {
       expect(screen.getAllByTestId("detail")[0]).toBeInTheDocument();
       expect(fetch).toHaveBeenCalled();
     });
+  });
+
+  it("returns no card found", async () => {
+    render(
+      <BrowserRouter>
+        <Card info={null} details={false} />
+      </BrowserRouter>,
+    );
+    expect(screen.getByText(/card not found/)).toBeInTheDocument();
   });
 });
