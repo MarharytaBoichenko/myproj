@@ -20,8 +20,10 @@
     }
   },
   "lint-staged": {
-    "*.(ts|tsx|js|jsx)": ["prettier --write --ignore-unknown",
-    "vitest related --run"]
+    "*.(ts|tsx|js|jsx)": [
+      "prettier --write --ignore-unknown",
+      "vitest related --run"
+    ]
   },
   "dependencies": {
     "normalize.css": "^8.0.1",

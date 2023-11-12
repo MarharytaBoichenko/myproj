@@ -7,8 +7,7 @@ import Card from "./Card";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import CardPage from "./CardPage";
-import { MemoryRouter } from "react-router-dom";
-import { Routing } from "../Routing";
+import { renderWithRouter } from "../../tests/renderWithRouter";
 
 describe("Tests for the Detailed Card component", () => {
   const card: ICard = {
@@ -71,16 +70,11 @@ describe("Tests for the Detailed Card component", () => {
 
   it("clicking the close button hides the component", async () => {
     const pathRoute = "/details/1";
-    const { container } = render(
-      <MemoryRouter initialEntries={[pathRoute]}>
-        <Routing />
-      </MemoryRouter>,
-    );
+    renderWithRouter(<CardPage />, pathRoute);
     const user = userEvent.setup();
-    const button = container.querySelectorAll(".card__drop")[0];
-    user.click(button);
-    waitFor(async () => {
-      expect(screen.getAllByTestId("detail")[0]).not.toBeInTheDocument();
-    });
+    const closeButton = screen.getAllByRole("link")[0];
+    expect(screen.queryAllByTestId("detail")[0]).toBeInTheDocument();
+    user.click(closeButton);
+    expect(screen.queryAllByTestId("detail")[0]).toBeNull;
   });
 });

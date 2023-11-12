@@ -23,15 +23,15 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">87.09% </span>
+            <span class="strong">93.54% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">27/31</span>
+            <span class="fraction">29/31</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">40% </span>
+            <span class="strong">71.42% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">2/5</span>
+            <span class="fraction">5/7</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -41,9 +41,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">87.09% </span>
+            <span class="strong">93.54% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">27/31</span>
+            <span class="fraction">29/31</span>
           </div>
         </div>
         <p class="quiet">
@@ -99,26 +99,26 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
@@ -135,9 +135,9 @@ const Card = ({ info, details }: CardProps) =&gt; {
   const page = searchParams.get("page") || "1";
   const limit = searchParams.get("limit") || "30";
 &nbsp;
-  if (info == null) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >    return &lt;div className="cards__not"&gt;card not found&lt;/div&gt;;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  if (info == null) {
+    return &lt;div className="cards__not"&gt;card not found&lt;/div&gt;;
+  }
 &nbsp;
   let link = ("/details/" + info.id).toString() + "?page=" + page;
   if (limit !== "30") <span class="branch-0 cbranch-no" title="branch not covered" >link = link + "&amp;limit=" + limit;</span>
@@ -166,7 +166,7 @@ export default Card;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-11-10T18:48:59.057Z
+      at 2023-11-12T13:15:46.206Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

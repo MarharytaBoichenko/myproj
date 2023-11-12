@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Code coverage report for components/Layout.tsx</title>
+    <title>Code coverage report for tests/renderWithRouter.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
       <div class="pad1">
         <h1>
           <a href="../index.html">All files</a> /
-          <a href="index.html">components</a> Layout.tsx
+          <a href="index.html">tests</a> renderWithRouter.tsx
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">11/11</span>
+            <span class="fraction">12/12</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -43,7 +43,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">11/11</span>
+            <span class="fraction">12/12</span>
           </div>
         </div>
         <p class="quiet">
@@ -75,24 +75,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
-import Main from "./Main";
-import ErrorBoundary from "./Error/Error";
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">import {MemoryRouter} from "react-router-dom";
+import { Routing } from "../components/Routing";
+import { render } from "@testing-library/react";
 &nbsp;
-export const Layout: React.FC = () =&gt; (
-  &lt;&gt;
-    &lt;ErrorBoundary&gt;
-      &lt;Main /&gt;
-    &lt;/ErrorBoundary&gt;
-  &lt;/&gt;
-);
-&nbsp;</pre></td></tr></table></pre>
+export const renderWithRouter = (Component: JSX.Element, initialRoute = '/') =&gt; {
+    return render (
+        &lt;MemoryRouter initialEntries={[initialRoute]}&gt;
+            &lt;Routing /&gt;
+            {Component}
+        &lt;/MemoryRouter&gt;
+    )
+}</pre></td></tr></table></pre>
 
       <div class="push"></div>
       <!-- for sticky footer -->

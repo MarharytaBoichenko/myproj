@@ -19,6 +19,7 @@ const Search = (props: SearchProps) => {
 
   const submitSearch = (event: React.SyntheticEvent) => {
     event.preventDefault();
+    localStorage.setItem("search", search);
     searchParams.delete("page");
     setLocalSearch(search);
     setSearchParams(searchParams);
@@ -28,11 +29,10 @@ const Search = (props: SearchProps) => {
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setSearch(value);
-    localStorage.setItem("search", value);
   };
 
   return (
-    <form onSubmit={submitSearch}>
+    <form role="form" onSubmit={submitSearch}>
       <div className="search">
         <SearchLine search={search} onInputChange={onInputChange} />
         <SearchButton />

@@ -26,7 +26,7 @@ const LimitPage = () => {
   };
 
   return (
-    <form onSubmit={submitSearch}>
+    <form role="form" onSubmit={submitSearch}>
       <input
         type="text"
         className="input limit__input"
